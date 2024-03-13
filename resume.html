@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="rstyle.css">
+    <title>Resume Builder</title>
+</head>
+<body>
+    <header>
+        <h1>Resume Builder</h1>
+        <p>Create a professional resume with customizable templates.</p>
+    </header>
+
+    <div class="container">
+        <section id="templateSelector">
+            <h2>Choose a Template:</h2>
+            <select id="template">
+                <option value="Bold modern resume.docx">Template 1</option>
+            </select>
+        </section>
+<br>
+        <div class="resume-editor">
+            <div class="editor-panel">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Your Name">
+    
+                <label for="designation">Designation:</label>
+                <input type="text" id="designation" placeholder="Your Designation">
+    <br>
+                <label for="summary">Summary:</label>
+                <textarea id="summary" placeholder=" Give a brief about yourself"></textarea>
+            </div>
+    
+            <div class="preview-panel">
+                <h1 id="preview-name">Your Name</h1>
+                <h2 id="preview-designation">Your Designation</h2>
+                <p id="preview-summary">Your Summary</p>
+            </div>
+        </div>
+
+        <button onclick="downloadResume()">Download Resume</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Resume Builder</p>
+    </footer>
+
+    <script src="resumejs.js"></script>
+</body>
+</html>
+<!-- Include this JavaScript in your HTML file (script.js) -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Fetch elements
+        const nameInput = document.getElementById('name');
+        const designationInput = document.getElementById('designation');
+        const summaryInput = document.getElementById('summary');
+    
+        const previewName = document.getElementById('preview-name');
+        const previewDesignation = document.getElementById('preview-designation');
+        const previewSummary = document.getElementById('preview-summary');
+    
+        // Add event listeners for input changes
+        nameInput.addEventListener('input', updatePreview);
+        designationInput.addEventListener('input', updatePreview);
+        summaryInput.addEventListener('input', updatePreview);
+    
+        // Function to update the preview
+        function updatePreview() {
+            previewName.innerText = nameInput.value || 'Your Name';
+            previewDesignation.innerText = designationInput.value || 'Your Designation';
+            previewSummary.innerText = summaryInput.value || 'Your Summary';
+        }
+    });
+    </script>
